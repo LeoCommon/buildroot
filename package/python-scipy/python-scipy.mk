@@ -28,7 +28,6 @@ PYTHON_SCIPY_DEPENDENCIES += \
 	host-python-numpy \
 	host-python-pythran \
 	zlib \
-	lapack \
 	openblas \
 	python3 \
 	python-numpy \
@@ -39,7 +38,7 @@ PYTHON_SCIPY_CONF_ENV += \
 	_PYTHON_SYSCONFIGDATA_NAME=$(PKG_PYTHON_SYSCONFIGDATA_NAME) \
 	PYTHONPATH=$(PYTHON3_PATH)
 
-PYTHON_SCIPY_CONF_OPTS = -Dblas=openblas -Dlapack=lapack
+PYTHON_SCIPY_CONF_OPTS = -Dblas=openblas -Dlapack=openblas
 
 PYTHON_SCIPY_MESON_EXTRA_PROPERTIES = \
 	numpy-include-dir='$(STAGING_DIR)/usr/lib/python$(PYTHON3_VERSION_MAJOR)/site-packages/numpy/core/include'

@@ -24,22 +24,11 @@ PYTHON_NUMPY_CONF_ENV += \
 	_PYTHON_SYSCONFIGDATA_NAME=$(PKG_PYTHON_SYSCONFIGDATA_NAME) \
 	PYTHONPATH=$(PYTHON3_PATH)
 
-ifeq ($(BR2_PACKAGE_LAPACK),y)
-PYTHON_NUMPY_DEPENDENCIES += lapack
-PYTHON_NUMPY_CONF_OPTS += -Dlapack=lapack
-else
-PYTHON_NUMPY_CONF_OPTS += -Dlapack=""
-endif
-
-ifeq ($(BR2_PACKAGE_OPENBLAS),y)
+# Use openblas for blas and lapack
 PYTHON_NUMPY_DEPENDENCIES += openblas
-PYTHON_NUMPY_CONF_OPTS += -Dblas=openblas
-else
-PYTHON_NUMPY_CONF_OPTS += -Dblas=""
-endif
+PYTHON_NUMPY_CONF_OPTS += -Dblas=openblas -Dlapack=openblas
 
-# Rather than add a host-blas or host-lapack dependencies, just use unoptimized,
-# in-tree code.
+# Rather than add a host-blas or host-lapack dependencies, just use openblas
 HOST_PYTHON_NUMPY_CONF_OPTS = -Dblas="" -Dlapack=""
 
 # Fixup the npymath.ini prefix path with actual target staging area where

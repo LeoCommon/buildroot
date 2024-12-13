@@ -178,4 +178,9 @@ config BR2_PACKAGE_GNURADIO_UHD
 	help
 	  UHD support
 
+config BR2_PACKAGE_GNURADIO_SOAPY
+	bool "gr-soapy support"
+	select BR2_PACKAGE_SOAPYSDR
+	help
+	  SoapySDR support
 endif
